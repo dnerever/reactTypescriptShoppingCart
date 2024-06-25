@@ -17,7 +17,7 @@ export const Cart: FunctionComponent = () => {
     }, [location])
 
     const handleRemoveProduct = (productId: number): void => {
-        setCart((prevCart: any) => {
+        setCart((prevCart: CartProps) => {
             const updatedCart = { ...prevCart }
             delete updatedCart[productId]
             return updatedCart
@@ -25,7 +25,7 @@ export const Cart: FunctionComponent = () => {
     }
 
     const handleUpdateQuantity = (productId: number, operation: Operation) => {
-        setCart((prevCart: any) => {
+        setCart((prevCart: CartProps) => {
             const updatedCart = { ...prevCart }
             if (updatedCart[productId]) {
                 if (operation === 'increase') {

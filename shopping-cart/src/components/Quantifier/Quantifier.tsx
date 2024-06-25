@@ -37,7 +37,8 @@ export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, ha
                 max=""
                 value={value}
                 onChange={e => setValue(parseInt(e.target.value))}
-                className={classes.quantityField} />
+                className={classes.quantityField}
+            />
             <input type="button" value="+" className={classes.buttonPlus} onClick={increase} />
         </div>
     )
