@@ -51,6 +51,7 @@ export const Cart: FunctionComponent = () => {
                     <img src={product.thumbnail} alt={product.title} />
                     <h3>{product.title}</h3>
                     <Quantifier
+                        initialQuantity={product.quantity}
                         removeProductCallback={() => handleRemoveProduct(product.id)}
                         productId={product.id}
                         handleUpdateQuantity={handleUpdateQuantity} />

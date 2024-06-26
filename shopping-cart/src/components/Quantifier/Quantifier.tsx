@@ -7,10 +7,11 @@ interface Props {
     removeProductCallback: (productId: number) => void
     handleUpdateQuantity: (productId: number, operation: Operation) => void
     productId: number
+    initialQuantity: number
 }
 
-export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId }) => {
-    const [value, setValue] = useState<number>(1)
+export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId, initialQuantity }) => {
+    const [value, setValue] = useState<number>(initialQuantity)
 
     const reduce = ():void => {
         handleUpdateQuantity(productId, 'decrease')
