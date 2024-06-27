@@ -13,12 +13,16 @@ interface Props {
 export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId, initialQuantity }) => {
     const [value, setValue] = useState<number>(initialQuantity)
 
+    // const checkRealValue = ():void => {
+
+    // }
+    
     const reduce = ():void => {
         handleUpdateQuantity(productId, 'decrease')
 
         setValue(prevState => {
             const updatedValue = prevState - 1
-            if (updatedValue === 0) {
+            if (updatedValue <= 0) {
                 removeProductCallback(productId)
             }
             return updatedValue
