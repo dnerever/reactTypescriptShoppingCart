@@ -13,6 +13,7 @@ interface Props {
 export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId, initialQuantity }) => {
     const [value, setValue] = useState<number>(initialQuantity)
 
+    // Verify that quantity after increase/decrease is 1 or greater
     const validQuantity = (value: number):Boolean => {
         if ((initialQuantity + value) <= 0) {
             removeProductCallback(productId)
@@ -26,14 +27,7 @@ export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, ha
             return
         }
         handleUpdateQuantity(productId, 'decrease')
-
-        setValue(prevState => {
-            const updatedValue = prevState - 1
-            if (updatedValue <= 0) {
-                removeProductCallback(productId)
-            }
-            return updatedValue
-        })
+        setValue(prevState => prevState - 1)
     }
 
     const increase = ():void => {
