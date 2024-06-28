@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'React'
+import { FunctionComponent, useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 
 import { CurrencyFormatter } from '../CurrencyFormatter'
