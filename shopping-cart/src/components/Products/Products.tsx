@@ -1,3 +1,4 @@
+//todo add navigation or create a navigation widget so this apge can actually be reached by clicking the product thumbnail
 import { FunctionComponent, useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 
