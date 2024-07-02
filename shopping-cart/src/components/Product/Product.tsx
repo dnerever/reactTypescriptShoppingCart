@@ -17,6 +17,10 @@ export type Product = {
     quantity: number
 }
 
+export interface CartProps {
+    [productId: string]: Product
+}
+
 export const Prod: FunctionComponent = () => {
     //stuff here
     //? Do I want to pull data down here as well or reference the Products component
@@ -25,7 +29,8 @@ export const Prod: FunctionComponent = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [product, setProduct] = useState<Product>()
     const [error, setError] = useState(false)
-    //* add storage of cart contents    
+    const [cart, setCart] = useLocalStorageState<CartProps>('cart', {})
+    
 
     useEffect(() => {
         fetchData(API_URL)  //need to make this a single item by appending "/{product_number}"
@@ -48,6 +53,17 @@ export const Prod: FunctionComponent = () => {
         }
     }
 
+    const addToCart = (product: Product):void => {
+        product.quantity = 1
+        
+        setCart((prevCart: any) => ({
+            ...prevCart,
+            [product.id]: product,
+        }))
+    }
+
+    const isInCart = (productId: number): boolean => Object.keys(cart || {}).includes(productId.toString())
+
     if (error) {
         return <h3 className={classes.error}>An error occurred when fetching data. Please check the API and try again.</h3>
     }
@@ -66,7 +82,7 @@ export const Prod: FunctionComponent = () => {
                         <img src={product.thumbnail} alt={product.title} />
                         <h3>{product.title}</h3>
                         <p>Price: <CurrencyFormatter amount={product.price} /></p>
-                        {/* <button disabled={isInCart(product.id)} onClick={() => addToCart(product)}>Add to Cart</button> */}
+                        <button disabled={isInCart(product.id)} onClick={() => addToCart(product)}>Add to Cart</button>
                     </div>
                 )}
             </div>
