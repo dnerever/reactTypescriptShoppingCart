@@ -6,7 +6,7 @@ import classes from './product.module.scss'
 import { Loader } from '../Loader'
 // import { Products } from '../Products'
 
-const API_URL = 'https://dummyjson.com/products/1'
+const API_URL = 'https://dummyjson.com/products/1'  //single item
 
 export type Product = {
     id: number

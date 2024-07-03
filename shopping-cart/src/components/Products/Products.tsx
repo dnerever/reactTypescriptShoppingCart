@@ -74,7 +74,9 @@ export const Products: FunctionComponent = () => {
             <div className={classes.container}>
                 {products.map(product => (
                     <div className={classes.product} key={product.id}>
-                        <img src={product.thumbnail} alt={product.title} />
+                        <a href="/product">
+                            <img src={product.thumbnail} alt={product.title} />
+                        </a>
                         <h3>{product.title}</h3>
                         <p>Price: <CurrencyFormatter amount={product.price} /></p>
                         <button disabled={isInCart(product.id)} onClick={() => addToCart(product)}>Add to Cart</button>
