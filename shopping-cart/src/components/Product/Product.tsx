@@ -1,12 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
 
 import { CurrencyFormatter  } from '../CurrencyFormatter'
 import classes from './product.module.scss'
 import { Loader } from '../Loader'
-// import { Products } from '../Products'
 
-const API_URL = 'https://dummyjson.com/products/1'  //single item
+const API_URL = 'https://dummyjson.com/products'
 
 export type Product = {
     id: number
@@ -22,26 +22,33 @@ export interface CartProps {
 }
 
 export const Prod: FunctionComponent = () => {
-    //stuff here
-    //? Do I want to pull data down here as well or reference the Products component
-    // Figure out how to pull indivual prod data (maybe per request?)
+    const { id } = useParams<{ id: string }>()
+    const urlId = id
+
+    const product1 = {
+        id: 1,
+        title: "string",
+        price: 2.00,
+        thumbnail: "string",
+        image: "string",
+        quantity: 1        
+    }
     
     const [isLoading, setIsLoading] = useState(true)
-    const [product, setProduct] = useState<Product>()
+    const [product, setProduct] = useState<Product | null>(product1)
     const [error, setError] = useState(false)
     const [cart, setCart] = useLocalStorageState<CartProps>('cart', {})
     
-
     useEffect(() => {
-        fetchData(API_URL)  //need to make this a single item by appending "/{product_number}"
-    })
+        fetchData(`${API_URL}/${urlId}`)  //need to make this a single item by appending "/{product_number}"
+    }, [])  //empty array means that it will only use the effect on reload
 
     async function fetchData(url: string) {
         try {
             const response = await fetch(url)
             if (response.ok) {
                 const data = await response.json()
-                setProduct(data.product)
+                setProduct(data)
                 setIsLoading(false)
             } else {
                 setError(true)
@@ -52,6 +59,7 @@ export const Prod: FunctionComponent = () => {
             setIsLoading(true)
         }
     }
+
 
     const addToCart = (product: Product):void => {
         product.quantity = 1
@@ -79,8 +87,8 @@ export const Prod: FunctionComponent = () => {
             <div className={classes.container}>
                 {product && (
                     <div className={classes.product} key={product.id}>
-                        <img src={product.thumbnail} alt={product.title} />
                         <h3>{product.title}</h3>
+                        <img src={product.thumbnail} alt={product.title} />
                         <p>Price: <CurrencyFormatter amount={product.price} /></p>
                         <button disabled={isInCart(product.id)} onClick={() => addToCart(product)}>Add to Cart</button>
                     </div>

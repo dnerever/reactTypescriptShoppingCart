@@ -22,7 +22,7 @@ function App() {
                         element={<Cart />}
                     />
                     <Route
-                        path="/product"
+                        path="/product/:id"
                         element={<Prod />}
                     />
                 </Routes>
