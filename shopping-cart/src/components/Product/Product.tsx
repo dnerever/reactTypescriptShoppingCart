@@ -21,21 +21,12 @@ export interface CartProps {
     [productId: string]: Product
 }
 
-export const Prod: FunctionComponent = () => {
+export const ProductDetails: FunctionComponent = () => {
     const { id } = useParams<{ id: string }>()
     const urlId = id
-
-    const product1 = {
-        id: 1,
-        title: "string",
-        price: 2.00,
-        thumbnail: "string",
-        image: "string",
-        quantity: 1        
-    }
     
     const [isLoading, setIsLoading] = useState(true)
-    const [product, setProduct] = useState<Product | null>(product1)
+    const [product, setProduct] = useState<Product | null>(null)
     const [error, setError] = useState(false)
     const [cart, setCart] = useLocalStorageState<CartProps>('cart', {})
     

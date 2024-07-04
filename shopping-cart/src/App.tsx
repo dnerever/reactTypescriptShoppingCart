@@ -4,7 +4,7 @@ import { Header } from './components/Header'
 import { Products } from './components/Products'
 import { Footer } from './components/Footer'
 import { Cart } from './components/Cart'
-import { Prod } from './components/Product'
+import { ProductDetails } from './components/Product'
 import './app.module.scss'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
                     />
                     <Route
                         path="/product/:id"
-                        element={<Prod />}
+                        element={<ProductDetails />}
                     />
                 </Routes>
             </main>
