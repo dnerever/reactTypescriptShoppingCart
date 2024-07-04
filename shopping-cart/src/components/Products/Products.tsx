@@ -74,11 +74,7 @@ export const Products: FunctionComponent = () => {
             <div className={classes.container}>
                 {products.map(product => (
                     <div className={classes.product} key={product.id}>
-                        <Link
-                            to={{
-                                pathname: `/product/${product.id}`
-                            }}
-                        >
+                        <Link to={{pathname: `/product/${product.id}`}}>
                             <img src={product.thumbnail} alt={product.title} />
                         </Link>
                         <h3>{product.title}</h3>

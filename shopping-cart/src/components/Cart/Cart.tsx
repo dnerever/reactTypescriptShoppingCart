@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect } from "react"
+import { useLocation, Link } from "react-router-dom"
 import useLocalStorageState from "use-local-storage-state"
 
 import { Quantifier } from '../Quantifier'
@@ -6,7 +7,6 @@ import { CartProps } from '../Products/Products.tsx'
 import { TotalPrice } from '../TotalPrice'
 import { Operation } from '../Quantifier/Quantifier.tsx'
 import classes from './cart.module.scss'
-import { useLocation } from "react-router-dom"
 
 export const Cart: FunctionComponent = () => {
     const [cart, setCart] = useLocalStorageState<CartProps>('cart', {})
@@ -48,8 +48,10 @@ export const Cart: FunctionComponent = () => {
         <div className={classes.container}>
             {getProducts().map(product => (
                 <div className={classes.product} key={product.id}>
-                    <img src={product.thumbnail} alt={product.title} />
-                    <h3>{product.title}</h3>
+                    <Link to={{pathname: `/product/${product.id}`}}>
+                        <img src={product.thumbnail} alt={product.title} />
+                    </Link>
+                        <h3>{product.title}</h3>
                     <Quantifier
                         initialQuantity={product.quantity}
                         removeProductCallback={() => handleRemoveProduct(product.id)}
