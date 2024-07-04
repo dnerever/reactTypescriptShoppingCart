@@ -1,4 +1,5 @@
-import { FunctionComponent, useEffect, useState } from "react"
+import { FunctionComponent, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
 
 import { CurrencyFormatter } from '../CurrencyFormatter'
@@ -73,7 +74,13 @@ export const Products: FunctionComponent = () => {
             <div className={classes.container}>
                 {products.map(product => (
                     <div className={classes.product} key={product.id}>
-                        <img src={product.thumbnail} alt={product.title} />
+                        <Link
+                            to={{
+                                pathname: `/product/${product.id}`
+                            }}
+                        >
+                            <img src={product.thumbnail} alt={product.title} />
+                        </Link>
                         <h3>{product.title}</h3>
                         <p>Price: <CurrencyFormatter amount={product.price} /></p>
                         <button disabled={isInCart(product.id)} onClick={() => addToCart(product)}>Add to Cart</button>

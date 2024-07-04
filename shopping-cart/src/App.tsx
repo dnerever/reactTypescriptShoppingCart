@@ -4,6 +4,7 @@ import { Header } from './components/Header'
 import { Products } from './components/Products'
 import { Footer } from './components/Footer'
 import { Cart } from './components/Cart'
+import { ProductDetails } from './components/Product'
 import './app.module.scss'
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
                     <Route
                         path="/cart"
                         element={<Cart />}
+                    />
+                    <Route
+                        path="/product/:id"
+                        element={<ProductDetails />}
                     />
                 </Routes>
             </main>
