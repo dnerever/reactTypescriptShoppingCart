@@ -1,7 +1,9 @@
 # reactTypescriptShoppingCart
 
-![Homepage of the ecommerce site showing multiple items with multiple added to the cart](homepage.png)
-![Cart contents include: Cucumber x2, Fish Steak x5, Green Bell Pepper x1 and Green Chili Pepper x6](cart.png)
+<!-- ![Homepage of the ecommerce site showing multiple items with multiple added to the cart](homepage.png) -->
+<img src="homepage.png" alt="Homepage of the ecommerce site showing multiple items with multiple added to the cart" width="600" />
+
+<img src="cart.png" alt="Cart contents include: Cucumber x2, Fish Steak x5, Green Bell Pepper x1 and Green Chili Pepper x6" width="600" />
 
 ## Learnings
 
