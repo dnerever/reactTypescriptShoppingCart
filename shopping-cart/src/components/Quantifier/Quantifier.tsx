@@ -23,18 +23,13 @@ export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, ha
     }
     
     const reduce = ():void => {
-        if (!validQuantity(-1)) {
-            return
-        }
+        if (!validQuantity(-1)) {  return  }
         handleUpdateQuantity(productId, 'decrease')
         setValue(prevState => prevState - 1)
     }
 
     const increase = ():void => {
-        if (!validQuantity(1)) {
-            return
-        }
-        
+        if (!validQuantity(1)) {  return  }
         handleUpdateQuantity(productId, 'increase')
         setValue(prevState => prevState + 1)
     }
