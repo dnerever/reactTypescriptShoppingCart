@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
 import classes from './quantifier.module.scss'
 
 export type Operation = 'decrease' | 'increase'
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId, initialQuantity }) => {
-    const [value, setValue] = useState<number>(initialQuantity)
+    var [value, setValue] = useState<number>(initialQuantity)
 
     // Verify that quantity after increase/decrease is 1 or greater
     const validQuantity = (value: number):Boolean => {
