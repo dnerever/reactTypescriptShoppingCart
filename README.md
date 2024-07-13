@@ -1,5 +1,7 @@
 # reactTypescriptShoppingCart
 
+Basis of this application and idea by [Mihail Gaberov](https://github.com/mihailgaberov)
+
 <!-- ![Homepage of the ecommerce site showing multiple items with multiple added to the cart](homepage.png) -->
 <img src="homepage.png" alt="Homepage of the ecommerce site showing multiple items with multiple added to the cart" width="600" />
 
