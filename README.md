@@ -11,6 +11,11 @@
 - Work with React's useLocalState to store data within the browser
 - Create components for each function that work together
 
+## Future Plans:
+- Add a login
+- Add a payment processor
+- ???
+
 
 ## Instructions to run locally (debian env)
 
