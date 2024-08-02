@@ -14,6 +14,7 @@
 ## Future Plans:
 - Add a login
 - Add a payment processor
+- Add custom product recommendations
 - ???
 
 
